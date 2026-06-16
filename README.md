@@ -2,7 +2,7 @@
 
 ![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Version](https://img.shields.io/badge/version-0.19.0-informational)
+![Version](https://img.shields.io/badge/version-0.20.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -32,7 +32,8 @@ The implementation is intentionally conservative. Phases 1-11 are executable res
 | Programmer Core | 17 | Implemented foundation | Local code indexing, task planning, verification, failure extraction, GPU probe, and JSONL memory |
 | Website Builder Core | 18 | Implemented foundation | One-prompt static website generation, manifest output, and trace recording |
 | Local Trace Trainer | 19 | Implemented foundation | Trace dataset extraction, local statistical training, model artifact output, and evaluation predictions |
-| Future Work | Beyond 19 | Planned | Not implemented in this repository |
+| GPU Trace Trainer | 20 | Implemented runner | CUDA PyTorch training loop, checkpointing, logs, and long-running local training support |
+| Future Work | Beyond 20 | Planned | Not implemented in this repository |
 
 ## System Architecture
 
@@ -56,6 +57,7 @@ flowchart TD
     P16 --> P17["Phase 17: Programmer Core"]
     P17 --> P18["Phase 18: Website Builder Core"]
     P18 --> P19["Phase 19: Local Trace Trainer"]
+    P19 --> P20["Phase 20: GPU Trace Trainer"]
 ```
 
 ### Executable Research Core: Phases 1-11
@@ -91,6 +93,7 @@ flowchart TD
 | 17 | Programmer Core | Indexes Python code with AST, maps symbols/imports/tests, plans likely target files for a task, runs verification commands, extracts failures, probes local NVIDIA acceleration, and can record JSONL memory traces. |
 | 18 | Website Builder Core | Builds a complete static website from one prompt, writes HTML/CSS/JS/manifest files, and records a generation trace for future learning. |
 | 19 | Local Trace Trainer | Reads verified local traces, builds a supervised prompt-to-artifact dataset, trains a lightweight local model, saves a model artifact, and reports predictions. |
+| 20 | GPU Trace Trainer | Runs a CUDA PyTorch transformer over local trace data, saves checkpoints, and supports long-running training jobs on the local RTX GPU. |
 
 ## Features
 
@@ -112,6 +115,7 @@ flowchart TD
 - Phase 17 local programming-core benchmark for code inspection, task planning, verification, failure analysis, GPU probing, and evidence memory.
 - Phase 18 one-prompt website generation with self-contained static output.
 - Phase 19 local training pipeline over Programmer and Website Builder traces.
+- Phase 20 GPU-backed trace-model trainer using CUDA PyTorch.
 - PowerShell runner scripts for every implemented phase.
 - Standard-library-focused test suite with optional MuJoCo coverage.
 - JSON demo baselines for Phases 1-16 in [`docs/demo-baseline`](docs/demo-baseline/README.md).
@@ -167,6 +171,7 @@ Run the full set of phase benchmarks:
 .\scripts\run-programmer.ps1 -Task "improve graph error handling" -Json
 .\scripts\run-website-builder.ps1 -Prompt "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU." -Json
 .\scripts\run-training.ps1 -Json
+.\scripts\run-gpu-training.ps1 -DurationSeconds 3600
 ```
 
 Run the installed console command:
@@ -319,6 +324,16 @@ Example output excerpt:
 
 What happens: the trainer reads local JSON/JSONL traces, normalizes them into a supervised dataset, trains an inspectable local trace model, saves the model artifact, and returns predictions for an evaluation prompt. It reports GPU availability, but this first trainer does not use GPU tensor acceleration.
 
+### Phase 20: GPU Trace Trainer
+
+Command:
+
+```powershell
+.\scripts\run-gpu-training.ps1 -DurationSeconds 3600
+```
+
+What happens: the trainer uses CUDA PyTorch to train a transformer-based multi-label trace model on local prompt/artifact traces and deterministic augmentations. It writes logs and checkpoints to `models/gpu-trace-model/` by default. For long-running experiments, use an ignored output path under `artifacts/`.
+
 Full expected outputs are stored in [`docs/demo-baseline`](docs/demo-baseline/README.md).
 
 ## Test ✅
@@ -367,7 +382,8 @@ Current limitations:
 - The Programmer Core does not yet synthesize arbitrary patches by itself; it is the local inspection, planning, verification, failure-analysis, and memory foundation for that next step.
 - The Website Builder Core is deterministic local generation. It is not evidence that neural training has occurred.
 - Phase 19 trains a small local statistical model from traces. It is real training, but not neural GPU training.
-- GPU neural training still requires a tensor backend, a local model, and a larger evaluation dataset.
+- Phase 20 is real CUDA neural training over local trace data. It is still small-scale and dataset-limited, not frontier-model training.
+- Larger GPU neural training still requires a larger dataset and a stronger evaluation harness.
 - Grounding audits trace provenance through the system; they do not prove real-world truth.
 
 ## Future Roadmap
@@ -385,7 +401,7 @@ Current limitations:
 - Add supervised trace learning from successful programming tasks.
 - Add a sandboxed self-repair benchmark over intentionally broken mini-projects.
 - Add local model-backed website generation after a prompt/site/evaluation dataset exists.
-- Add GPU-backed LoRA/QLoRA training after a compatible local model runtime is configured.
+- Add LoRA/QLoRA fine-tuning after a compatible local foundation model is configured.
 
 ## GitHub Publication 🚀
 

@@ -79,8 +79,29 @@ Phase 19 trains the first local trace model:
 ```
 
 This is real training over local traces, but it is a lightweight statistical
-model. It does not use GPU tensor acceleration yet because no local neural
-backend is configured in this repository.
+model.
+
+Phase 20 adds CUDA PyTorch training:
+
+```powershell
+.\scripts\run-gpu-training.ps1 -DurationSeconds 3600
+```
+
+For long-running jobs, write checkpoints under ignored `artifacts/`:
+
+```powershell
+.\scripts\run-gpu-training.ps1 `
+    -OutputDir artifacts\gpu-training-long `
+    -DurationSeconds 21600 `
+    -BatchSize 768 `
+    -Width 768 `
+    -Layers 6 `
+    -Heads 12 `
+    -AugmentCopies 4096
+```
+
+This is real neural training on the local GPU. It is still dataset-limited: the
+model can only learn from the traces currently available.
 
 ## Honest Milestone
 
