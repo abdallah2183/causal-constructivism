@@ -25,6 +25,7 @@ from .strategist import run_strategist_benchmark
 from .theorist import run_theorist_benchmark
 from .universalist import run_universalist_benchmark
 from .integrator_system import run_integrator_benchmark
+from .programmer import run_programmer_benchmark
 from .system import CausalConstructivismSystem
 
 from .twin_system import default_twin_world
@@ -218,12 +219,34 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Run the Phase 16 end-to-end cognitive loop orchestration benchmark.",
     )
+    parser.add_argument(
+        "--programmer",
+        action="store_true",
+        help="Run the Phase 17 local programming-core benchmark.",
+    )
+    parser.add_argument(
+        "--programmer-task",
+        default="Add a verified programming capability to this Python project.",
+        help="Programming task text used by the Phase 17 planner.",
+    )
+    parser.add_argument(
+        "--programmer-run-tests",
+        action="store_true",
+        help="Run the full local test suite during the Phase 17 benchmark.",
+    )
+    parser.add_argument(
+        "--programmer-memory",
+        default=None,
+        help="Optional JSONL memory path for recording the Phase 17 evidence report.",
+    )
     return parser
 
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.programmer:
+        return run_programmer(args)
     if args.integrator:
         return run_integrator(args)
     if args.collaborator:
@@ -294,6 +317,66 @@ def main(argv: list[str] | None = None) -> int:
                 "F={free_energy:.3f} grounding={grounding}"
                 .format(**row)
             )
+    return 0
+
+
+def run_programmer(args: argparse.Namespace) -> int:
+    memory_path = Path(args.programmer_memory) if args.programmer_memory else None
+    result = run_programmer_benchmark(
+        ".",
+        args.programmer_task,
+        run_tests=args.programmer_run_tests,
+        memory_path=memory_path,
+    )
+    row = {
+        "phase": 17,
+        "status": result.status,
+        "task": result.task.text,
+        "project": {
+            "root": result.index.root,
+            "modules": len(result.index.modules),
+            "source_files": len(result.index.source_files),
+            "test_files": len(result.index.test_files),
+            "symbols": result.index.symbol_count,
+            "syntax_errors": result.index.syntax_error_count,
+        },
+        "plan": {
+            "target_files": list(result.plan.target_files),
+            "rationale": list(result.plan.rationale),
+            "risk": result.plan.risk,
+            "required_checks": [
+                list(command) for command in result.plan.required_checks
+            ],
+        },
+        "verification": [
+            {
+                "command": list(check.command),
+                "returncode": check.returncode,
+                "passed": check.passed,
+            }
+            for check in result.verification
+        ],
+        "failures": [
+            {
+                "source": failure.source,
+                "line": failure.line,
+                "message": failure.message,
+            }
+            for failure in result.failures
+        ],
+        "accelerator": {
+            "available": result.accelerator.available,
+            "name": result.accelerator.name,
+            "total_memory_mib": result.accelerator.total_memory_mib,
+            "driver_version": result.accelerator.driver_version,
+            "reason": result.accelerator.reason,
+        },
+        "memory_written": result.memory_written,
+    }
+    if args.as_json:
+        print(json.dumps(row, indent=2))
+    else:
+        print(row)
     return 0
 
 

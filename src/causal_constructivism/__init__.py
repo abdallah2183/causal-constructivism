@@ -44,6 +44,24 @@ from .persistence import SQLiteGraphStore
 from .mujoco_adapter import MuJoCoAdapter, MuJoCoUnavailableError
 from .integrator import CognitiveOrchestrator, OrchestrationStepResult, IntegratorResult
 from .integrator_system import IntegratorSystem, IntegratorBenchmarkResult, run_integrator_benchmark
+from .programmer import (
+    AcceleratorProfile,
+    CodeIndexer,
+    CodeSymbol,
+    FailureAnalyzer,
+    FailureFinding,
+    LocalVerifier,
+    ModuleIndex,
+    PatchPlan,
+    ProgrammerCore,
+    ProgrammerMemory,
+    ProgrammerReport,
+    ProgrammingTask,
+    ProjectIndex,
+    TaskPlanner,
+    VerificationResult,
+    run_programmer_benchmark,
+)
 
 
 __all__ = [
@@ -107,4 +125,20 @@ __all__ = [
     "IntegratorSystem",
     "IntegratorBenchmarkResult",
     "run_integrator_benchmark",
+    "AcceleratorProfile",
+    "CodeIndexer",
+    "CodeSymbol",
+    "FailureAnalyzer",
+    "FailureFinding",
+    "LocalVerifier",
+    "ModuleIndex",
+    "PatchPlan",
+    "ProgrammerCore",
+    "ProgrammerMemory",
+    "ProgrammerReport",
+    "ProgrammingTask",
+    "ProjectIndex",
+    "TaskPlanner",
+    "VerificationResult",
+    "run_programmer_benchmark",
 ]
