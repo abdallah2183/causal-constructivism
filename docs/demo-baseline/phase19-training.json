@@ -1,0 +1,51 @@
+﻿{
+  "phase": 19,
+  "status": "trained",
+  "examples": 2,
+  "labels": 18,
+  "tokens": 17,
+  "model_path": "models\\local-trace-model.json",
+  "dataset_path": "docs\\training-data\\local-trace-dataset.jsonl",
+  "accelerator": {
+    "available": true,
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "total_memory_mib": 16311,
+    "driver_version": "610.47",
+    "reason": null
+  },
+  "accelerator_used": false,
+  "predictions": [
+    {
+      "label": "artifact:README.md",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "artifact:app.js",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "artifact:index.html",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "artifact:manifest.json",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "artifact:styles.css",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "file:src/causal_constructivism/__init__.py",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "file:src/causal_constructivism/agency.py",
+      "score": -19.53945512471321
+    },
+    {
+      "label": "file:src/causal_constructivism/embodied_system.py",
+      "score": -19.53945512471321
+    }
+  ]
+}

@@ -72,6 +72,16 @@ Phase 18 also records one-prompt website generation traces:
 Those traces are useful for learning prompt-to-artifact behavior once a local
 model adapter and evaluator exist.
 
+Phase 19 trains the first local trace model:
+
+```powershell
+.\scripts\run-training.ps1 -Json
+```
+
+This is real training over local traces, but it is a lightweight statistical
+model. It does not use GPU tensor acceleration yet because no local neural
+backend is configured in this repository.
+
 ## Honest Milestone
 
 The first serious learning milestone is not "be smarter than LLMs." It is:

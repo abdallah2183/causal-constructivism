@@ -69,6 +69,15 @@ from .website_builder import (
     WebsiteSection,
     run_website_builder_benchmark,
 )
+from .training import (
+    LocalTraceModel,
+    LocalTraceTrainer,
+    TraceDatasetBuilder,
+    TrainingDataset,
+    TrainingExample,
+    TrainingReport,
+    run_local_training,
+)
 
 
 __all__ = [
@@ -153,4 +162,11 @@ __all__ = [
     "WebsitePrompt",
     "WebsiteSection",
     "run_website_builder_benchmark",
+    "LocalTraceModel",
+    "LocalTraceTrainer",
+    "TraceDatasetBuilder",
+    "TrainingDataset",
+    "TrainingExample",
+    "TrainingReport",
+    "run_local_training",
 ]

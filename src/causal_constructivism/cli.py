@@ -27,6 +27,7 @@ from .universalist import run_universalist_benchmark
 from .integrator_system import run_integrator_benchmark
 from .programmer import run_programmer_benchmark
 from .website_builder import run_website_builder_benchmark
+from .training import run_local_training
 from .system import CausalConstructivismSystem
 
 from .twin_system import default_twin_world
@@ -268,12 +269,40 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Optional JSONL trace path for recording generated website builds.",
     )
+    parser.add_argument(
+        "--train-local",
+        action="store_true",
+        help="Run the Phase 19 local trace training pipeline.",
+    )
+    parser.add_argument(
+        "--training-trace",
+        action="append",
+        default=[],
+        help="JSON or JSONL trace file used for Phase 19 training. Repeatable.",
+    )
+    parser.add_argument(
+        "--training-model",
+        default="models/local-trace-model.json",
+        help="Output path for the trained Phase 19 model artifact.",
+    )
+    parser.add_argument(
+        "--training-dataset",
+        default="docs/training-data/local-trace-dataset.jsonl",
+        help="Output path for the normalized Phase 19 training dataset.",
+    )
+    parser.add_argument(
+        "--training-eval-prompt",
+        default="Build a website and update graph tests.",
+        help="Prompt used to evaluate the trained local trace model.",
+    )
     return parser
 
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.train_local:
+        return run_training(args)
     if args.website_builder:
         return run_website_builder(args)
     if args.programmer:
@@ -348,6 +377,47 @@ def main(argv: list[str] | None = None) -> int:
                 "F={free_energy:.3f} grounding={grounding}"
                 .format(**row)
             )
+    return 0
+
+
+def run_training(args: argparse.Namespace) -> int:
+    trace_paths = [Path(path) for path in args.training_trace]
+    if not trace_paths:
+        trace_paths = [
+            Path("docs/demo-baseline/phase17-programmer.json"),
+            Path("docs/demo-baseline/phase18-website-builder.json"),
+        ]
+    result = run_local_training(
+        trace_paths,
+        model_path=Path(args.training_model),
+        dataset_path=Path(args.training_dataset),
+        eval_prompt=args.training_eval_prompt,
+    )
+    row = {
+        "phase": 19,
+        "status": result.status,
+        "examples": result.examples,
+        "labels": result.labels,
+        "tokens": result.tokens,
+        "model_path": result.model_path,
+        "dataset_path": result.dataset_path,
+        "accelerator": {
+            "available": result.accelerator.available,
+            "name": result.accelerator.name,
+            "total_memory_mib": result.accelerator.total_memory_mib,
+            "driver_version": result.accelerator.driver_version,
+            "reason": result.accelerator.reason,
+        },
+        "accelerator_used": result.accelerator_used,
+        "predictions": [
+            {"label": label, "score": score}
+            for label, score in result.predictions
+        ],
+    }
+    if args.as_json:
+        print(json.dumps(row, indent=2))
+    else:
+        print(row)
     return 0
 
 
