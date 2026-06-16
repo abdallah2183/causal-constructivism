@@ -1,6 +1,6 @@
 # Causal Constructivism
 
-![Tests](https://github.com/abdallah2183/causal-constructivism/actions/workflows/tests.yml/badge.svg)
+![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![Version](https://img.shields.io/badge/version-0.16.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)

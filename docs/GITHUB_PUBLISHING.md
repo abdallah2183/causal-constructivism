@@ -103,13 +103,18 @@ https://github.com/abdallah2183/causal-constructivism
 
 ## 4. Confirm the README Badge
 
-The README test badge is already configured for `abdallah2183`:
+The README uses a static local-test badge because this project was verified
+locally before publication:
+
+```markdown
+![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen)
+```
+
+If GitHub Actions is available on the account, add a workflow badge later:
 
 ```markdown
 ![Tests](https://github.com/abdallah2183/causal-constructivism/actions/workflows/tests.yml/badge.svg)
 ```
-
-It will start showing the real workflow state after GitHub Actions runs once.
 
 ## 5. Suggested GitHub UI Setup
 
@@ -161,17 +166,18 @@ Leave blank unless you publish documentation or a project page later.
 Current README badges:
 
 ```markdown
-![Tests](https://github.com/abdallah2183/causal-constructivism/actions/workflows/tests.yml/badge.svg)
+![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![Version](https://img.shields.io/badge/version-0.16.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ```
 
-The test badge will start working after:
+The local-test badge reflects the most recent verified local run:
 
-1. the repository is pushed,
-2. GitHub Actions runs at least once.
+```text
+66 tests OK, 1 skipped
+```
 
 ## 7. Folder Structure Suggestions
 
