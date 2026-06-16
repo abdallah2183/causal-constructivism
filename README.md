@@ -1,14 +1,12 @@
 # Causal Constructivism
 
-![Tests](https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism/actions/workflows/tests.yml/badge.svg)
+![Tests](https://github.com/abdallah2183/causal-constructivism/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![Version](https://img.shields.io/badge/version-0.16.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A causal-graph-first research prototype for active inference, counterfactual simulation, grounded concept discovery, symbolic law search, and metacognitive research workflows.
-
-> Replace `YOUR_GITHUB_USERNAME` in the test badge after publishing the repository.
 
 ## Overview
 
@@ -112,7 +110,7 @@ flowchart TD
 ### Clone and install
 
 ```powershell
-git clone https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism.git
+git clone https://github.com/abdallah2183/causal-constructivism.git
 cd causal-constructivism
 python -m pip install -e ".[dev]"
 ```

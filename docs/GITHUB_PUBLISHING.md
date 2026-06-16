@@ -4,28 +4,35 @@ This guide prepares the local Causal Constructivism project for publication unde
 
 - Name: Abdullah Salem Saleh Al-Faqeer
 - Email: abdallahor1991254@gmail.com
+- GitHub account: `abdallah2183`
 
 ## 1. Create the GitHub Repository
 
-1. Open GitHub in your browser.
-2. Click **New repository**.
-3. Use the recommended settings:
+Use the GitHub CLI from the repository root:
+
+```powershell
+gh repo create abdallah2183/causal-constructivism `
+    --public `
+    --description "Causal-graph active-inference research prototype with discovery, counterfactuals, symbolic laws, and metacognitive facades." `
+    --source . `
+    --remote origin
+```
+
+Equivalent GitHub UI settings:
 
 | Field | Value |
 | --- | --- |
 | Repository name | `causal-constructivism` |
-| Description | `Causal-graph active-inference research prototype with phases for discovery, counterfactuals, symbolic laws, and metacognitive facades.` |
-| Visibility | Public, unless you want private development first |
+| Description | `Causal-graph active-inference research prototype with discovery, counterfactuals, symbolic laws, and metacognitive facades.` |
+| Visibility | Public |
 | Initialize with README | No, because the local repo already has one |
 | Add .gitignore | No, because the local repo already has one |
 | Choose a license | No, because the local repo already includes MIT |
 
-4. Click **Create repository**.
-
-GitHub will show a repository URL like:
+Repository URL:
 
 ```text
-https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism.git
+https://github.com/abdallah2183/causal-constructivism
 ```
 
 ## 2. Connect the Local Repo to GitHub
@@ -56,16 +63,16 @@ Abdullah Salem Saleh Al-Faqeer
 abdallahor1991254@gmail.com
 ```
 
-Add the GitHub remote:
+If the GitHub CLI did not already set the remote:
 
 ```powershell
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism.git
+git remote add origin https://github.com/abdallah2183/causal-constructivism.git
 ```
 
-If a remote already exists and you need to replace it:
+If a placeholder remote already exists:
 
 ```powershell
-git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism.git
+git remote set-url origin https://github.com/abdallah2183/causal-constructivism.git
 ```
 
 Verify:
@@ -91,26 +98,18 @@ git push -u origin main
 After the push succeeds, the project page will be:
 
 ```text
-https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism
+https://github.com/abdallah2183/causal-constructivism
 ```
 
-## 4. Update the README Badge
+## 4. Confirm the README Badge
 
-Open `README.md` and replace:
+The README test badge is already configured for `abdallah2183`:
 
-```text
-YOUR_GITHUB_USERNAME
+```markdown
+![Tests](https://github.com/abdallah2183/causal-constructivism/actions/workflows/tests.yml/badge.svg)
 ```
 
-with your real GitHub username.
-
-Then commit and push:
-
-```powershell
-git add README.md
-git commit -m "Update GitHub badge owner"
-git push
-```
+It will start showing the real workflow state after GitHub Actions runs once.
 
 ## 5. Suggested GitHub UI Setup
 
@@ -162,7 +161,7 @@ Leave blank unless you publish documentation or a project page later.
 Current README badges:
 
 ```markdown
-![Tests](https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism/actions/workflows/tests.yml/badge.svg)
+![Tests](https://github.com/abdallah2183/causal-constructivism/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![Version](https://img.shields.io/badge/version-0.16.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
@@ -172,8 +171,7 @@ Current README badges:
 The test badge will start working after:
 
 1. the repository is pushed,
-2. `YOUR_GITHUB_USERNAME` is replaced,
-3. GitHub Actions runs at least once.
+2. GitHub Actions runs at least once.
 
 ## 7. Folder Structure Suggestions
 
@@ -181,10 +179,10 @@ The current structure is good for publication. Recommended next improvements:
 
 ```text
 docs/
-├── images/                 # Banner, architecture diagram, screenshots
-├── demo-baseline/          # Existing JSON output baselines
-├── ARCHITECTURE.md         # Existing architecture details
-└── GITHUB_PUBLISHING.md    # This guide
+|-- images/                 # Banner, architecture diagram, screenshots
+|-- demo-baseline/          # Existing JSON output baselines
+|-- ARCHITECTURE.md         # Existing architecture details
+`-- GITHUB_PUBLISHING.md    # This guide
 ```
 
 Optional future additions:
@@ -292,7 +290,7 @@ Recommended tools:
 
 ## 9. Demo Section Strategy
 
-The README already includes three representative demos:
+The README includes three representative demos:
 
 - Phase 1 active mass inference
 - Phase 12 Cartographer facade
@@ -331,6 +329,6 @@ Publish:
 
 ```powershell
 git branch -M main
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/causal-constructivism.git
+git remote add origin https://github.com/abdallah2183/causal-constructivism.git
 git push -u origin main
 ```
