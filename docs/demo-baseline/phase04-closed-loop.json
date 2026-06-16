@@ -1,0 +1,112 @@
+﻿{
+  "experiments": 6,
+  "successful": true,
+  "mass_estimates": {
+    "red_cube": [
+      1.0135217059291648,
+      0.001102578805726202
+    ],
+    "blue_sphere": [
+      2.0203394722991646,
+      0.009621838555115149
+    ],
+    "green_cylinder": [
+      4.041504056432397,
+      0.03850951801096773
+    ]
+  },
+  "true_masses": {
+    "red_cube": 1.0,
+    "blue_sphere": 2.0,
+    "green_cylinder": 4.0
+  },
+  "relative_errors": {
+    "red_cube": 0.013521705929164796,
+    "blue_sphere": 0.010169736149582276,
+    "green_cylinder": 0.010376014108099296
+  },
+  "selected_actions": [
+    {
+      "step": 1,
+      "object": "blue_sphere",
+      "force": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "acceleration": 5.940000000000004,
+      "mass_mean": 2.0204769368529476,
+      "mass_std": 0.013609609223988578,
+      "grounding": "confident"
+    },
+    {
+      "step": 2,
+      "object": "green_cylinder",
+      "force": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "acceleration": 2.970000000000002,
+      "mass_mean": 4.042605472030255,
+      "mass_std": 0.054505249044718665,
+      "grounding": "confident"
+    },
+    {
+      "step": 3,
+      "object": "red_cube",
+      "force": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "acceleration": 11.880000000000008,
+      "mass_mean": 1.0126130746113982,
+      "mass_std": 0.0032843803657373145,
+      "grounding": "confident"
+    },
+    {
+      "step": 4,
+      "object": "green_cylinder",
+      "force": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "acceleration": 2.970000000000002,
+      "mass_mean": 4.041504056432397,
+      "mass_std": 0.03850951801096773,
+      "grounding": "confident"
+    },
+    {
+      "step": 5,
+      "object": "red_cube",
+      "force": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "acceleration": 11.880000000000008,
+      "mass_mean": 1.0135217059291648,
+      "mass_std": 0.001102578805726202,
+      "grounding": "confident"
+    },
+    {
+      "step": 6,
+      "object": "blue_sphere",
+      "force": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "acceleration": 5.940000000000004,
+      "mass_mean": 2.0203394722991646,
+      "mass_std": 0.009621838555115149,
+      "grounding": "confident"
+    }
+  ],
+  "graph_nodes": 69,
+  "graph_edges": 95,
+  "snapshot_id": 1,
+  "database": "C:\\Users\\abdal\\OneDrive\\Desktop\\NWO\\artifacts\\baseline-phase04.db"
+}

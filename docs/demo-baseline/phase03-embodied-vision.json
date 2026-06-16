@@ -1,0 +1,18 @@
+﻿{
+  "frames": 5,
+  "persistent_tracks": [
+    "object_0001",
+    "object_0002"
+  ],
+  "births": 2,
+  "occlusions": 1,
+  "losses": 0,
+  "graph_nodes": 21,
+  "graph_edges": 29,
+  "grounding": [
+    "confident",
+    "confident"
+  ],
+  "snapshot_id": 1,
+  "database": "C:\\Users\\abdal\\OneDrive\\Desktop\\NWO\\artifacts\\baseline-phase03.db"
+}

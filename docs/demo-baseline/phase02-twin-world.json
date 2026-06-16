@@ -1,0 +1,16 @@
+﻿{
+  "query": "green.position",
+  "intervention": {
+    "action.force": 2.0
+  },
+  "actual_mean": 6.635102156928932,
+  "actual_std": 0.5135119635189642,
+  "counterfactual_mean": 3.0096393208105305,
+  "counterfactual_std": 0.1069108843579981,
+  "actual_collision_probability": 1.0,
+  "counterfactual_collision_probability": 0.0,
+  "grounding": "confident",
+  "grounding_confidence": 0.9034150934200943,
+  "grounding_roots": 15,
+  "learned_contact_relations": 1
+}

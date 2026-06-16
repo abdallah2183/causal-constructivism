@@ -1,0 +1,56 @@
+﻿{
+  "contested_node": "concept.friction",
+  "rounds_count": 1,
+  "grounding_quality": 1.0,
+  "grounding": "confident",
+  "final_consensus": {
+    "source": "concept.friction",
+    "target": "concept.damping",
+    "type": "consensus",
+    "confidence": 0.95,
+    "provenance_edges": [
+      "concept.friction"
+    ]
+  },
+  "rounds": [
+    {
+      "round_number": 1,
+      "disagreement_type": "empirical",
+      "contradictions": [
+        {
+          "source": "concept.friction",
+          "target": "concept.damping",
+          "type": "contradicts",
+          "confidence": 0.95,
+          "provenance_edges": [
+            "concept.friction"
+          ]
+        }
+      ],
+      "proposed_experiments": [
+        {
+          "text": "Does damping modulate restitution independently of friction?",
+          "target_concepts": [
+            "concept.damping"
+          ],
+          "priority_score": 0.725
+        }
+      ],
+      "executed_experiment": "Does damping modulate restitution independently of friction?",
+      "belief_updates": {
+        "Agent_A": {
+          "concept.friction": {
+            "mean": 0.25,
+            "variance": 0.01
+          }
+        },
+        "Agent_B": {
+          "concept.friction": {
+            "mean": 0.25,
+            "variance": 0.01
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+﻿{
+  "query_node": "concept.friction",
+  "node_count": 3,
+  "edge_count": 2,
+  "grounded_edge_count": 2,
+  "grounding_quality": 1.0,
+  "grounding": "confident",
+  "neighborhood": [
+    "concept.damping",
+    "concept.friction",
+    "concept.restitution"
+  ],
+  "analogies": [
+    "concept.damping"
+  ],
+  "proposed_experiments": [
+    {
+      "experiment_type": "test_concept.damping",
+      "expected_information_gain": 0.95,
+      "action_force": 3.0,
+      "duration": 5.0
+    }
+  ],
+  "nodes": [
+    {
+      "id": "concept.friction",
+      "name": "friction",
+      "type": "concept",
+      "domain": "slide-collision",
+      "parameters": {},
+      "grounded_law_ref": null
+    },
+    {
+      "id": "concept.restitution",
+      "name": "restitution",
+      "type": "concept",
+      "domain": "slide-collision",
+      "parameters": {},
+      "grounded_law_ref": null
+    },
+    {
+      "id": "concept.damping",
+      "name": "damping",
+      "type": "concept",
+      "domain": "oscillations",
+      "parameters": {},
+      "grounded_law_ref": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "concept.friction",
+      "target": "concept.restitution",
+      "type": "modulates",
+      "confidence": 1.0,
+      "provenance_edges": [
+        "edge.friction_restitution"
+      ]
+    },
+    {
+      "source": "concept.restitution",
+      "target": "concept.damping",
+      "type": "is_analogous_to",
+      "confidence": 0.85,
+      "provenance_edges": [
+        "prop.restitution"
+      ]
+    }
+  ]
+}

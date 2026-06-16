@@ -1,0 +1,41 @@
+﻿{
+  "experiments": 6,
+  "intervention": "discover_friction_before_mass",
+  "shared_exogenous_ids": [
+    "trial_001",
+    "trial_002",
+    "trial_003",
+    "trial_004",
+    "trial_005",
+    "trial_006"
+  ],
+  "actual": {
+    "policy": "baseline",
+    "mean_mass_error": 0.1206864735190995,
+    "final_mass_error": 0.0,
+    "mean_prediction_error": 0.1412465259375,
+    "experiments_to_friction": 4,
+    "confident_fraction": 1.0,
+    "ungrounded_nodes": 0,
+    "final_mass_grounding": "confident",
+    "graph_nodes": 30,
+    "graph_edges": 39
+  },
+  "counterfactual": {
+    "policy": "baseline.discover_friction_before_mass",
+    "mean_mass_error": 0.0,
+    "final_mass_error": 0.0,
+    "mean_prediction_error": 0.0,
+    "experiments_to_friction": 0,
+    "confident_fraction": 1.0,
+    "ungrounded_nodes": 0,
+    "final_mass_grounding": "confident",
+    "graph_nodes": 27,
+    "graph_edges": 36
+  },
+  "comparison": {
+    "mean_mass_error_reduction": 0.1206864735190995,
+    "prediction_error_reduction": 0.1412465259375,
+    "experiments_saved_to_friction": 4
+  }
+}

@@ -1,0 +1,33 @@
+﻿{
+  "principle": "harmonic_motion",
+  "template": "T = 2*pi*sqrt(inertia/restoring)",
+  "confidence": 0.9,
+  "instances": [
+    {
+      "domain": "pendulum",
+      "law_id": "pendulum_period",
+      "expression": "6.28319*sqrt((L / g))",
+      "signature": "coefficient*sqrt(inertia/restoring)"
+    },
+    {
+      "domain": "spring",
+      "law_id": "spring_period",
+      "expression": "6.28319*sqrt((m / k))",
+      "signature": "coefficient*sqrt(inertia/restoring)"
+    }
+  ],
+  "prediction": {
+    "target_domain": "lc_oscillator",
+    "predicted_law": "T = 2*pi*sqrt(L*C)",
+    "confidence": 0.8500000000000001,
+    "tested": true,
+    "confirmed": true,
+    "grounding": "confident"
+  },
+  "confirmed_predictions": 1,
+  "grounding": "confident",
+  "grounding_confidence": 0.8500000000000001,
+  "graph_nodes": 7,
+  "graph_edges": 6,
+  "ungrounded_nodes": 0
+}

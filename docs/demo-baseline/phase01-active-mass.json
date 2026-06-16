@@ -1,0 +1,52 @@
+﻿[
+  {
+    "step": 1,
+    "force": 6.0,
+    "acceleration": 2.3872059855776198,
+    "mass_mean": 2.516716553048011,
+    "mass_std": 0.052852080416692614,
+    "free_energy": 1.9582547089010283,
+    "grounding": "confident",
+    "grounding_confidence": 0.9391664360547156
+  },
+  {
+    "step": 2,
+    "force": 6.0,
+    "acceleration": 2.425571575625826,
+    "mass_mean": 2.4949798087769133,
+    "mass_std": 0.03670454398748764,
+    "free_energy": 0.45361619565569455,
+    "grounding": "confident",
+    "grounding_confidence": 0.9643737656470089
+  },
+  {
+    "step": 3,
+    "force": 6.0,
+    "acceleration": 2.3886951917608448,
+    "mass_mean": 2.500574235217793,
+    "mass_std": 0.030097220562876125,
+    "free_energy": -1.4548610699617583,
+    "grounding": "confident",
+    "grounding_confidence": 0.9745662838458629
+  },
+  {
+    "step": 4,
+    "force": 6.0,
+    "acceleration": 2.384246578883441,
+    "mass_mean": 2.504542532464659,
+    "mass_std": 0.026144935654377015,
+    "free_energy": -3.5806429261977577,
+    "grounding": "confident",
+    "grounding_confidence": 0.9801696621959296
+  },
+  {
+    "step": 5,
+    "force": 6.0,
+    "acceleration": 2.3534990904838615,
+    "mass_mean": 2.5133887363867866,
+    "mass_std": 0.023548707405825323,
+    "free_energy": -5.844701688786033,
+    "grounding": "confident",
+    "grounding_confidence": 0.9837060945240486
+  }
+]

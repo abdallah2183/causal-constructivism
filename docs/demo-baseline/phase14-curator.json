@@ -1,0 +1,36 @@
+﻿{
+  "question_count": 1,
+  "grounding_quality": 1.0,
+  "grounding": "confident",
+  "questions": [
+    {
+      "text": "Does damping modulate restitution independently of friction?",
+      "target_concepts": [
+        "concept.damping"
+      ],
+      "expected_information_gain": 0.85,
+      "connectivity": 0.4,
+      "feasibility": 0.9,
+      "priority_score": 0.725,
+      "provenance_edges": [
+        "concept.friction",
+        "concept.restitution"
+      ]
+    }
+  ],
+  "proposed_experiments": [
+    {
+      "experiment_type": "test_concept.damping",
+      "expected_information_gain": 0.95,
+      "action_force": 3.0,
+      "duration": 5.0
+    }
+  ],
+  "policies": [
+    {
+      "policy_name": "damping_exploration_policy",
+      "action_force": 3.0,
+      "anomaly_threshold": 0.1
+    }
+  ]
+}

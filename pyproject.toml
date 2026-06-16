@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "causal-constructivism"
+version = "0.16.0"
+description = "A buildable causal-graph active-inference prototype."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "NWO" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+embodied = ["mujoco>=3.3", "numpy>=1.26"]
+
+[project.scripts]
+causal-constructivism = "causal_constructivism.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

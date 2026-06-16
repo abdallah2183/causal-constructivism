@@ -1,0 +1,30 @@
+<mujoco model="embodied_scientist">
+  <option timestep="0.002" gravity="0 0 0"/>
+  <visual>
+    <map znear="0.01" zfar="50"/>
+  </visual>
+  <worldbody>
+    <light pos="0 -3 6"/>
+    <camera name="camera_0" pos="0 -8 4" xyaxes="1 0 0 0 0.45 0.893"/>
+    <geom name="reference_table" type="box" pos="0 0 -0.08"
+          size="4 2 0.05" rgba="0.25 0.25 0.25 1" contype="0" conaffinity="0"/>
+
+    <body name="red_cube" pos="-1.2 -0.6 0.35">
+      <joint name="red_cube_slide_x" type="slide" axis="1 0 0" damping="0"/>
+      <geom name="red_cube_geom" type="box" size="0.25 0.25 0.25"
+            mass="1.0" rgba="0.9 0.1 0.1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <body name="blue_sphere" pos="-1.2 0.0 0.35">
+      <joint name="blue_sphere_slide_x" type="slide" axis="1 0 0" damping="0"/>
+      <geom name="blue_sphere_geom" type="sphere" size="0.25"
+            mass="2.0" rgba="0.1 0.2 0.9 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <body name="green_cylinder" pos="-1.2 0.6 0.35">
+      <joint name="green_cylinder_slide_x" type="slide" axis="1 0 0" damping="0"/>
+      <geom name="green_cylinder_geom" type="cylinder" size="0.22 0.28"
+            mass="4.0" rgba="0.1 0.75 0.25 1" contype="0" conaffinity="0"/>
+    </body>
+  </worldbody>
+</mujoco>

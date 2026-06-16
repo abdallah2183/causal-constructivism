@@ -1,0 +1,15 @@
+﻿{
+  "discovered": true,
+  "concept": "friction",
+  "target": "block_001",
+  "coefficient": 0.25,
+  "neural_confidence": 0.9998056125388778,
+  "evidence_gain": 112.68689476382896,
+  "score": 110.08401067202777,
+  "node_id": "c12ed19f-11e8-427a-854c-d5cedd093af2",
+  "grounding": "confident",
+  "grounding_confidence": 0.9756097560975611,
+  "ungrounded_nodes": 0,
+  "records": 8,
+  "log": "C:\\Users\\abdal\\OneDrive\\Desktop\\NWO\\artifacts\\baseline-phase05-discovery.jsonl"
+}

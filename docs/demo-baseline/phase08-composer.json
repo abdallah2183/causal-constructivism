@@ -1,0 +1,63 @@
+﻿{
+  "selected_concepts": [
+    "friction",
+    "restitution"
+  ],
+  "parameters": {
+    "friction.coefficient": 0.25,
+    "restitution.coefficient": 0.65
+  },
+  "score": 109.74131931691996,
+  "evidence_gain": 111.27937652105531,
+  "residual_error": 0.0,
+  "candidate_models": [
+    {
+      "concepts": [
+        "friction",
+        "restitution"
+      ],
+      "parameters": {
+        "friction.coefficient": 0.25,
+        "restitution.coefficient": 0.65
+      },
+      "score": 109.74131931691996,
+      "evidence_gain": 111.27937652105531,
+      "residual_error": 0.0
+    },
+    {
+      "concepts": [
+        "restitution"
+      ],
+      "parameters": {
+        "restitution.coefficient": 0.575587564275525
+      },
+      "score": 10.050708542341653,
+      "evidence_gain": 10.819737144409329,
+      "residual_error": 0.0807731014466902
+    },
+    {
+      "concepts": [
+        "friction"
+      ],
+      "parameters": {
+        "friction.coefficient": 0.25
+      },
+      "score": 1.9710270923186637,
+      "evidence_gain": 2.7400556943863403,
+      "residual_error": 0.6088453957523436
+    }
+  ],
+  "concept_grounding": {
+    "friction": "confident",
+    "restitution": "confident"
+  },
+  "interaction": {
+    "source": "friction",
+    "target": "restitution",
+    "type": "friction_loss_modulates_restitution",
+    "grounding": "confident"
+  },
+  "graph_nodes": 9,
+  "graph_edges": 10,
+  "ungrounded_nodes": 0
+}

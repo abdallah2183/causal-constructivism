@@ -1,0 +1,43 @@
+﻿{
+  "query_node": "concept.friction",
+  "sentence_count": 5,
+  "grounding_quality": 1.0,
+  "grounding": "confident",
+  "sentences": [
+    {
+      "text": "The system discovered damping with coefficient 0.25 (confidence: 0.90) based on 8 observations of slide-collision.",
+      "confidence": 0.9,
+      "provenance_edges": [
+        "concept.damping"
+      ]
+    },
+    {
+      "text": "The system discovered friction with coefficient 0.25 (confidence: 0.90) based on 8 observations of slide-collision.",
+      "confidence": 0.9,
+      "provenance_edges": [
+        "concept.friction"
+      ]
+    },
+    {
+      "text": "The system discovered restitution with coefficient 0.25 (confidence: 0.90) based on 8 observations of slide-collision.",
+      "confidence": 0.9,
+      "provenance_edges": [
+        "concept.restitution"
+      ]
+    },
+    {
+      "text": "The relationship between concept.friction and concept.restitution follows Composer physical model, where concept.friction modulates concept.restitution.",
+      "confidence": 1.0,
+      "provenance_edges": [
+        "edge.friction_restitution"
+      ]
+    },
+    {
+      "text": "This concept is analogous to concept.damping in cross-domain because they share harmonic motion properties.",
+      "confidence": 0.85,
+      "provenance_edges": [
+        "prop.restitution"
+      ]
+    }
+  ]
+}

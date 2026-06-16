@@ -1,0 +1,78 @@
+﻿{
+  "selected_law": "sqrt_length_over_gravity_period",
+  "expression": "T = 6.28319*sqrt((L / g))",
+  "parameters": [
+    6.283185307179586
+  ],
+  "rmse": 0.0,
+  "score": 290.4900196428775,
+  "evidence_gain": 292.06673310551156,
+  "complexity_penalty": 1.8267134626340538,
+  "scope_bonus": 0.25,
+  "candidate_laws": [
+    {
+      "name": "sqrt_length_over_gravity_period",
+      "expression": "T = 6.28319*sqrt((L / g))",
+      "parameters": [
+        6.283185307179586
+      ],
+      "rmse": 0.0,
+      "score": 290.4900196428775,
+      "evidence_gain": 292.06673310551156,
+      "complexity_penalty": 1.8267134626340538
+    },
+    {
+      "name": "overfit_polynomial_period",
+      "expression": "T = 0.524188*1 + 2.15692*L + -0.850874*(L ^ 2) + 0.18004*(L ^ 3)",
+      "parameters": [
+        0.5241875272179588,
+        2.156915115622118,
+        -0.8508741183062092,
+        0.18004004496739234
+      ],
+      "rmse": 0.004244078689483956,
+      "score": 90.65969724143588,
+      "evidence_gain": 95.0438095517576,
+      "complexity_penalty": 4.384112310321729
+    },
+    {
+      "name": "quadratic_length_period",
+      "expression": "T = 3.01573*L + -0.906351*(L ^ 2)",
+      "parameters": [
+        3.0157274546737365,
+        -0.9063507835638848
+      ],
+      "rmse": 0.13169354760921453,
+      "score": 24.15269634611377,
+      "evidence_gain": 26.344752501274638,
+      "complexity_penalty": 2.1920561551608646
+    },
+    {
+      "name": "linear_length_period",
+      "expression": "T = 1.78431*L",
+      "parameters": [
+        1.784309981816157
+      ],
+      "rmse": 0.3732107391577979,
+      "score": 4.780754516524991,
+      "evidence_gain": 5.511439901578612,
+      "complexity_penalty": 0.7306853850536215
+    },
+    {
+      "name": "constant_period",
+      "expression": "T = 1.95521*1",
+      "parameters": [
+        1.955211472260777
+      ],
+      "rmse": 0.49162451268407503,
+      "score": -0.7306853850536215,
+      "evidence_gain": 0.0,
+      "complexity_penalty": 0.7306853850536215
+    }
+  ],
+  "grounding": "confident",
+  "grounding_confidence": 0.9448099008706795,
+  "graph_nodes": 3,
+  "graph_edges": 2,
+  "ungrounded_nodes": 0
+}

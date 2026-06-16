@@ -1,0 +1,16 @@
+﻿{
+  "source_concept": "friction",
+  "source_coefficient": 0.3,
+  "target_environment": "ice",
+  "revised_coefficient": 0.04999999999999999,
+  "true_target_coefficient": 0.05,
+  "pre_revision_error": 0.21465161367187502,
+  "post_revision_error": 0.0,
+  "evidence_gain": 104.36912859710961,
+  "transfer_grounding": "speculative",
+  "revision_grounding": "confident",
+  "revision_count": 1,
+  "graph_nodes": 7,
+  "graph_edges": 8,
+  "concept_library": "C:\\Users\\abdal\\OneDrive\\Desktop\\NWO\\artifacts\\baseline-phase06-concept-library.json"
+}
