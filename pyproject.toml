@@ -9,7 +9,7 @@ description = "A buildable causal-graph active-inference prototype."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "NWO" }]
+authors = [{ name = "Abdullah Salem Saleh Al-Faqeer", email = "abdallahor1991254@gmail.com" }]
 dependencies = []
 
 [project.optional-dependencies]
