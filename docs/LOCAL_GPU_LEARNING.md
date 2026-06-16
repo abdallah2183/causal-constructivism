@@ -60,6 +60,18 @@ The first dataset should come from Phase 17 memory:
 When patch generation is added, each successful fix should append one trace to
 that memory file.
 
+Phase 18 also records one-prompt website generation traces:
+
+```powershell
+.\scripts\run-website-builder.ps1 `
+    -Prompt "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU." `
+    -Trace artifacts\website-builder-traces.jsonl `
+    -Json
+```
+
+Those traces are useful for learning prompt-to-artifact behavior once a local
+model adapter and evaluator exist.
+
 ## Honest Milestone
 
 The first serious learning milestone is not "be smarter than LLMs." It is:

@@ -1,0 +1,42 @@
+﻿{
+  "phase": 18,
+  "status": "built",
+  "title": "Local Cognitive Engine",
+  "slug": "local-cognitive-engine",
+  "prompt": "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU.",
+  "output_dir": "docs\\generated-websites\\local-cognitive-engine",
+  "files": [
+    "README.md",
+    "app.js",
+    "index.html",
+    "manifest.json",
+    "styles.css"
+  ],
+  "sections": [
+    {
+      "id": "proof",
+      "eyebrow": "Proof, not promises",
+      "title": "A local system that acts, observes, and verifies",
+      "body": "The site presents a machine that does not depend on remote services. It reads local evidence, runs checks, and reports what actually happened."
+    },
+    {
+      "id": "architecture",
+      "eyebrow": "Architecture",
+      "title": "A loop around evidence",
+      "body": "Goal, plan, act, observe, verify, repair, and remember. The generated focus is local, cognitive, engine, programs, verifies."
+    },
+    {
+      "id": "capabilities",
+      "eyebrow": "Capabilities",
+      "title": "Built for local experiments",
+      "body": "The page highlights code indexing, test execution, GPU awareness, static site generation, and trace collection for future learning."
+    },
+    {
+      "id": "limits",
+      "eyebrow": "Limits",
+      "title": "No fake training claim",
+      "body": "This build does not claim neural training happened. It creates the artifact and records a trace that can become training data when a local model harness exists."
+    }
+  ],
+  "trace_path": null
+}

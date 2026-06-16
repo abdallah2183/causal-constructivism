@@ -2,7 +2,7 @@
 
 ![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Version](https://img.shields.io/badge/version-0.17.0-informational)
+![Version](https://img.shields.io/badge/version-0.18.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -30,7 +30,8 @@ The implementation is intentionally conservative. Phases 1-11 are executable res
 | Executable Research Core | 1-11 | Implemented | Simulation-backed, tested, runnable from scripts |
 | Research Facades | 12-16 | Implemented as facades | Rule-based, template-based, interface-validating prototypes |
 | Programmer Core | 17 | Implemented foundation | Local code indexing, task planning, verification, failure extraction, GPU probe, and JSONL memory |
-| Future Work | Beyond 16 | Planned | Not implemented in this repository |
+| Website Builder Core | 18 | Implemented foundation | One-prompt static website generation, manifest output, and trace recording |
+| Future Work | Beyond 18 | Planned | Not implemented in this repository |
 
 ## System Architecture
 
@@ -52,6 +53,7 @@ flowchart TD
     P14 --> P15["Phase 15: Collaborator"]
     P15 --> P16["Phase 16: Integrator"]
     P16 --> P17["Phase 17: Programmer Core"]
+    P17 --> P18["Phase 18: Website Builder Core"]
 ```
 
 ### Executable Research Core: Phases 1-11
@@ -85,6 +87,7 @@ flowchart TD
 | Phase | Name | What it does |
 | --- | --- | --- |
 | 17 | Programmer Core | Indexes Python code with AST, maps symbols/imports/tests, plans likely target files for a task, runs verification commands, extracts failures, probes local NVIDIA acceleration, and can record JSONL memory traces. |
+| 18 | Website Builder Core | Builds a complete static website from one prompt, writes HTML/CSS/JS/manifest files, and records a generation trace for future learning. |
 
 ## Features
 
@@ -104,6 +107,7 @@ flowchart TD
 - Strategy evaluation with adoption gates based on efficiency and grounding.
 - Phase 12-16 facade benchmarks for conceptual mapping, explanation, agenda formation, collaboration, and orchestration.
 - Phase 17 local programming-core benchmark for code inspection, task planning, verification, failure analysis, GPU probing, and evidence memory.
+- Phase 18 one-prompt website generation with self-contained static output.
 - PowerShell runner scripts for every implemented phase.
 - Standard-library-focused test suite with optional MuJoCo coverage.
 - JSON demo baselines for Phases 1-16 in [`docs/demo-baseline`](docs/demo-baseline/README.md).
@@ -157,6 +161,7 @@ Run the full set of phase benchmarks:
 .\scripts\run-collaborator.ps1 -Json
 .\scripts\run-integrator.ps1 -Json
 .\scripts\run-programmer.ps1 -Task "improve graph error handling" -Json
+.\scripts\run-website-builder.ps1 -Prompt "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU." -Json
 ```
 
 Run the installed console command:
@@ -265,6 +270,29 @@ Example output excerpt:
 
 What happens: the Programmer Core inspects the repository, indexes source and test symbols, identifies likely target files for the requested programming task, runs local verification, reports failures if any, and records evidence if memory is enabled.
 
+### Phase 18: Website Builder Core
+
+Command:
+
+```powershell
+.\scripts\run-website-builder.ps1 `
+    -Prompt "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU." `
+    -Json
+```
+
+Example output excerpt:
+
+```json
+{
+  "phase": 18,
+  "status": "built",
+  "title": "Local Cognitive Engine",
+  "files": ["README.md", "app.js", "index.html", "manifest.json", "styles.css"]
+}
+```
+
+What happens: the Website Builder Core converts a single prompt into a complete local static website. It does not require a server, and it records a manifest so the generated artifact can be inspected.
+
 Full expected outputs are stored in [`docs/demo-baseline`](docs/demo-baseline/README.md).
 
 ## Test ✅
@@ -285,7 +313,8 @@ The current suite covers graph contracts, inference, planning, persistence, coun
 │   ├── ARCHITECTURE.md         # Detailed architecture notes
 │   ├── GITHUB_PUBLISHING.md    # GitHub publication guide
 │   ├── LOCAL_GPU_LEARNING.md   # Honest local GPU learning path
-│   └── demo-baseline/          # JSON outputs for Phases 1-17
+│   ├── generated-websites/     # Phase 18 static website output
+│   └── demo-baseline/          # JSON outputs for Phases 1-18
 ├── scripts/                    # PowerShell runners and test command
 ├── src/
 │   └── causal_constructivism/  # Package source
@@ -308,6 +337,7 @@ Current limitations:
 - The Narrator uses deterministic templates, not an LLM.
 - The Collaborator simulates debate structure; it does not implement independent scientific agents with open-ended reasoning.
 - The Programmer Core does not yet synthesize arbitrary patches by itself; it is the local inspection, planning, verification, failure-analysis, and memory foundation for that next step.
+- The Website Builder Core is deterministic local generation. It is not evidence that neural training has occurred.
 - GPU training is not launched automatically. A local model, dataset, training harness, and evaluation loop must be configured before real neural learning can happen.
 - Grounding audits trace provenance through the system; they do not prove real-world truth.
 
@@ -325,6 +355,7 @@ Current limitations:
 - Add a local GPU model adapter for quantized code models.
 - Add supervised trace learning from successful programming tasks.
 - Add a sandboxed self-repair benchmark over intentionally broken mini-projects.
+- Add local model-backed website generation after a prompt/site/evaluation dataset exists.
 
 ## GitHub Publication 🚀
 

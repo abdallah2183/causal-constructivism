@@ -1,0 +1,54 @@
+{
+  "claims": {
+    "neural_training": false,
+    "server_required": false,
+    "static_site": true
+  },
+  "files": [
+    "index.html",
+    "styles.css",
+    "app.js",
+    "manifest.json",
+    "README.md"
+  ],
+  "keywords": [
+    "local",
+    "cognitive",
+    "engine",
+    "programs",
+    "verifies",
+    "remembers",
+    "runs",
+    "rtx",
+    "gpu"
+  ],
+  "prompt": "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU.",
+  "sections": [
+    {
+      "body": "The site presents a machine that does not depend on remote services. It reads local evidence, runs checks, and reports what actually happened.",
+      "eyebrow": "Proof, not promises",
+      "section_id": "proof",
+      "title": "A local system that acts, observes, and verifies"
+    },
+    {
+      "body": "Goal, plan, act, observe, verify, repair, and remember. The generated focus is local, cognitive, engine, programs, verifies.",
+      "eyebrow": "Architecture",
+      "section_id": "architecture",
+      "title": "A loop around evidence"
+    },
+    {
+      "body": "The page highlights code indexing, test execution, GPU awareness, static site generation, and trace collection for future learning.",
+      "eyebrow": "Capabilities",
+      "section_id": "capabilities",
+      "title": "Built for local experiments"
+    },
+    {
+      "body": "This build does not claim neural training happened. It creates the artifact and records a trace that can become training data when a local model harness exists.",
+      "eyebrow": "Limits",
+      "section_id": "limits",
+      "title": "No fake training claim"
+    }
+  ],
+  "slug": "local-cognitive-engine",
+  "title": "Local Cognitive Engine"
+}

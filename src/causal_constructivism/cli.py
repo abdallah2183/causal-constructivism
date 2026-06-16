@@ -26,6 +26,7 @@ from .theorist import run_theorist_benchmark
 from .universalist import run_universalist_benchmark
 from .integrator_system import run_integrator_benchmark
 from .programmer import run_programmer_benchmark
+from .website_builder import run_website_builder_benchmark
 from .system import CausalConstructivismSystem
 
 from .twin_system import default_twin_world
@@ -239,12 +240,42 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Optional JSONL memory path for recording the Phase 17 evidence report.",
     )
+    parser.add_argument(
+        "--website-builder",
+        action="store_true",
+        help="Run the Phase 18 one-prompt static website builder.",
+    )
+    parser.add_argument(
+        "--website-prompt",
+        default=(
+            "Build a complete landing page for a local cognitive engine that "
+            "programs, verifies, remembers, and runs on my RTX GPU."
+        ),
+        help="Single prompt used by the Phase 18 website builder.",
+    )
+    parser.add_argument(
+        "--website-output",
+        default="docs/generated-websites",
+        help="Output directory for generated Phase 18 websites.",
+    )
+    parser.add_argument(
+        "--website-slug",
+        default=None,
+        help="Optional output slug for the generated website.",
+    )
+    parser.add_argument(
+        "--website-trace",
+        default=None,
+        help="Optional JSONL trace path for recording generated website builds.",
+    )
     return parser
 
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.website_builder:
+        return run_website_builder(args)
     if args.programmer:
         return run_programmer(args)
     if args.integrator:
@@ -317,6 +348,40 @@ def main(argv: list[str] | None = None) -> int:
                 "F={free_energy:.3f} grounding={grounding}"
                 .format(**row)
             )
+    return 0
+
+
+def run_website_builder(args: argparse.Namespace) -> int:
+    trace_path = Path(args.website_trace) if args.website_trace else None
+    result = run_website_builder_benchmark(
+        args.website_prompt,
+        output_dir=args.website_output,
+        slug=args.website_slug,
+        trace_path=trace_path,
+    )
+    row = {
+        "phase": 18,
+        "status": "built",
+        "title": result.title,
+        "slug": result.slug,
+        "prompt": result.prompt,
+        "output_dir": result.output_dir,
+        "files": list(result.files),
+        "sections": [
+            {
+                "id": section.section_id,
+                "eyebrow": section.eyebrow,
+                "title": section.title,
+                "body": section.body,
+            }
+            for section in result.sections
+        ],
+        "trace_path": result.trace_path,
+    }
+    if args.as_json:
+        print(json.dumps(row, indent=2))
+    else:
+        print(row)
     return 0
 
 

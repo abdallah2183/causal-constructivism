@@ -2,8 +2,9 @@
 
 This directory captures the expected JSON output for one verified run of each
 implemented phase. Runtime side effects such as SQLite databases, discovery
-logs, concept-library JSON files, and Programmer Core memory traces are written
-under `artifacts/`, which is intentionally ignored by git.
+logs, concept-library JSON files, Programmer Core memory traces, and Website
+Builder traces are written under `artifacts/`, which is intentionally ignored
+by git.
 
 Regenerate the baseline from the repository root with:
 
@@ -25,4 +26,5 @@ Regenerate the baseline from the repository root with:
 .\scripts\run-collaborator.ps1 -Json
 .\scripts\run-integrator.ps1 -Json
 .\scripts\run-programmer.ps1 -Task "add safer graph validation" -Json
+.\scripts\run-website-builder.ps1 -Prompt "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU." -Json
 ```

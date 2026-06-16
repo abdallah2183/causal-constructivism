@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Local Cognitive Engine: a locally generated website from one prompt.">
+  <title>Local Cognitive Engine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" data-reveal>
+    <a class="brand" href="#top" aria-label="Local Cognitive Engine home">
+      <span class="brand-mark">CC</span>
+      <span>Local Cognitive Engine</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#proof">Proof</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#limits">Limits</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy" data-reveal>
+        <p class="kicker">One prompt. Local build. Verifiable output.</p>
+        <h1 id="hero-title">Local Cognitive Engine turns a prompt into a working interface.</h1>
+        <p class="lede">This static site was generated locally from a single prompt, with no server dependency and no claim of fake training.</p>
+        <div class="actions" aria-label="Demo actions">
+          <a class="button primary" href="#proof">Inspect the proof</a>
+          <a class="button secondary" href="manifest.json">Open manifest</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Causal build loop diagram" data-reveal>
+        <svg viewBox="0 0 520 420" role="img" aria-labelledby="diagram-title diagram-desc">
+          <title id="diagram-title">Local cognitive build loop</title>
+          <desc id="diagram-desc">A loop from goal to plan, action, observation, verification, repair, and memory.</desc>
+          <defs>
+            <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="oklch(0.22 0.05 250)" flood-opacity="0.22"/>
+            </filter>
+          </defs>
+          <rect class="diagram-plate" x="20" y="20" width="480" height="380" rx="34"/>
+          <path class="diagram-orbit" d="M260 82 C355 82 432 139 432 210 C432 281 355 338 260 338 C165 338 88 281 88 210 C88 139 165 82 260 82"/>
+          <g class="diagram-node" transform="translate(226 52)"><rect width="68" height="48" rx="16"/><text x="34" y="30">Goal</text></g>
+          <g class="diagram-node" transform="translate(377 133)"><rect width="76" height="48" rx="16"/><text x="38" y="30">Plan</text></g>
+          <g class="diagram-node" transform="translate(377 239)"><rect width="76" height="48" rx="16"/><text x="38" y="30">Act</text></g>
+          <g class="diagram-node" transform="translate(218 322)"><rect width="84" height="48" rx="16"/><text x="42" y="30">Observe</text></g>
+          <g class="diagram-node" transform="translate(67 239)"><rect width="86" height="48" rx="16"/><text x="43" y="30">Verify</text></g>
+          <g class="diagram-node" transform="translate(67 133)"><rect width="86" height="48" rx="16"/><text x="43" y="30">Repair</text></g>
+          <circle class="diagram-core" cx="260" cy="210" r="70"/>
+          <text class="diagram-core-text" x="260" y="202">Local</text>
+          <text class="diagram-core-text small" x="260" y="228">evidence loop</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="prompt-panel" aria-labelledby="prompt-title" data-reveal>
+      <p class="kicker">Original prompt</p>
+      <h2 id="prompt-title">The website is grounded in this request</h2>
+      <blockquote>Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU.</blockquote>
+      <div class="keyword-strip" aria-label="Extracted keywords">
+        <span>local</span>
+<span>cognitive</span>
+<span>engine</span>
+<span>programs</span>
+<span>verifies</span>
+<span>remembers</span>
+<span>runs</span>
+<span>rtx</span>
+      </div>
+    </section>
+
+        <section class="content-section" id="proof" data-reveal>
+      <p class="kicker">Proof, not promises</p>
+      <h2>A local system that acts, observes, and verifies</h2>
+      <p>The site presents a machine that does not depend on remote services. It reads local evidence, runs checks, and reports what actually happened.</p>
+    </section>
+    <section class="content-section" id="architecture" data-reveal>
+      <p class="kicker">Architecture</p>
+      <h2>A loop around evidence</h2>
+      <p>Goal, plan, act, observe, verify, repair, and remember. The generated focus is local, cognitive, engine, programs, verifies.</p>
+    </section>
+    <section class="content-section" id="capabilities" data-reveal>
+      <p class="kicker">Capabilities</p>
+      <h2>Built for local experiments</h2>
+      <p>The page highlights code indexing, test execution, GPU awareness, static site generation, and trace collection for future learning.</p>
+    </section>
+    <section class="content-section" id="limits" data-reveal>
+      <p class="kicker">Limits</p>
+      <h2>No fake training claim</h2>
+      <p>This build does not claim neural training happened. It creates the artifact and records a trace that can become training data when a local model harness exists.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Generated by Phase 18 Website Builder Core.</span>
+    <a href="README.md">Build notes</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
