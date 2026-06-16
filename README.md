@@ -2,7 +2,7 @@
 
 ![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Version](https://img.shields.io/badge/version-0.20.0-informational)
+![Version](https://img.shields.io/badge/version-0.21.0-informational)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -33,7 +33,8 @@ The implementation is intentionally conservative. Phases 1-11 are executable res
 | Website Builder Core | 18 | Implemented foundation | One-prompt static website generation, manifest output, and trace recording |
 | Local Trace Trainer | 19 | Implemented foundation | Trace dataset extraction, local statistical training, model artifact output, and evaluation predictions |
 | GPU Trace Trainer | 20 | Implemented runner | CUDA PyTorch training loop, checkpointing, logs, and long-running local training support |
-| Future Work | Beyond 20 | Planned | Not implemented in this repository |
+| Code Language Trainer | 21 | Implemented runner | Local code corpus builder, CUDA byte-level code model training, checkpointing, and sampling |
+| Future Work | Beyond 21 | Planned | Not implemented in this repository |
 
 ## System Architecture
 
@@ -58,6 +59,7 @@ flowchart TD
     P17 --> P18["Phase 18: Website Builder Core"]
     P18 --> P19["Phase 19: Local Trace Trainer"]
     P19 --> P20["Phase 20: GPU Trace Trainer"]
+    P20 --> P21["Phase 21: Code Language Trainer"]
 ```
 
 ### Executable Research Core: Phases 1-11
@@ -94,6 +96,7 @@ flowchart TD
 | 18 | Website Builder Core | Builds a complete static website from one prompt, writes HTML/CSS/JS/manifest files, and records a generation trace for future learning. |
 | 19 | Local Trace Trainer | Reads verified local traces, builds a supervised prompt-to-artifact dataset, trains a lightweight local model, saves a model artifact, and reports predictions. |
 | 20 | GPU Trace Trainer | Runs a CUDA PyTorch transformer over local trace data, saves checkpoints, and supports long-running training jobs on the local RTX GPU. |
+| 21 | Code Language Trainer | Builds a filtered local code corpus, trains a CUDA byte-level Transformer over code, and samples generated code from checkpoints. |
 
 ## Features
 
@@ -116,6 +119,7 @@ flowchart TD
 - Phase 18 one-prompt website generation with self-contained static output.
 - Phase 19 local training pipeline over Programmer and Website Builder traces.
 - Phase 20 GPU-backed trace-model trainer using CUDA PyTorch.
+- Phase 21 local code corpus and byte-level CUDA code language training.
 - PowerShell runner scripts for every implemented phase.
 - Standard-library-focused test suite with optional MuJoCo coverage.
 - JSON demo baselines for Phases 1-16 in [`docs/demo-baseline`](docs/demo-baseline/README.md).
@@ -172,6 +176,8 @@ Run the full set of phase benchmarks:
 .\scripts\run-website-builder.ps1 -Prompt "Build a complete landing page for a local cognitive engine that programs, verifies, remembers, and runs on my RTX GPU." -Json
 .\scripts\run-training.ps1 -Json
 .\scripts\run-gpu-training.ps1 -DurationSeconds 3600
+.\scripts\build-code-corpus.ps1 -Output artifacts\code-corpus\local-code-corpus.jsonl
+.\scripts\run-code-language-training.ps1 -DurationSeconds 3600
 ```
 
 Run the installed console command:
@@ -334,6 +340,17 @@ Command:
 
 What happens: the trainer uses CUDA PyTorch to train a transformer-based multi-label trace model on local prompt/artifact traces and deterministic augmentations. It writes logs and checkpoints to `models/gpu-trace-model/` by default. For long-running experiments, use an ignored output path under `artifacts/`.
 
+### Phase 21: Code Language Trainer
+
+Command:
+
+```powershell
+.\scripts\build-code-corpus.ps1 -Output artifacts\code-corpus\local-code-corpus.jsonl
+.\scripts\run-code-language-training.ps1 -DurationSeconds 86400
+```
+
+What happens: the corpus builder scans local code projects, filters common dependency/build folders and secret-like files, then writes JSONL training records. The trainer uses CUDA PyTorch to train a byte-level next-token model over the code corpus and saves checkpoints under `artifacts/code-language-model/` by default.
+
 Full expected outputs are stored in [`docs/demo-baseline`](docs/demo-baseline/README.md).
 
 ## Test ✅
@@ -352,6 +369,7 @@ The current suite covers graph contracts, inference, planning, persistence, coun
 │   └── scenes/                 # MuJoCo XML scenes
 ├── docs/
 │   ├── ARCHITECTURE.md         # Detailed architecture notes
+│   ├── CODE_LANGUAGE_TRAINING.md # Phase 21 code corpus and code model notes
 │   ├── GITHUB_PUBLISHING.md    # GitHub publication guide
 │   ├── LOCAL_GPU_LEARNING.md   # Honest local GPU learning path
 │   ├── generated-websites/     # Phase 18 static website output
@@ -383,7 +401,8 @@ Current limitations:
 - The Website Builder Core is deterministic local generation. It is not evidence that neural training has occurred.
 - Phase 19 trains a small local statistical model from traces. It is real training, but not neural GPU training.
 - Phase 20 is real CUDA neural training over local trace data. It is still small-scale and dataset-limited, not frontier-model training.
-- Larger GPU neural training still requires a larger dataset and a stronger evaluation harness.
+- Phase 21 is real CUDA neural training over local code files, but it still needs stronger evaluation before generated code should be trusted.
+- Larger GPU neural training still requires a larger curated dataset and a stronger evaluation harness.
 - Grounding audits trace provenance through the system; they do not prove real-world truth.
 
 ## Future Roadmap
@@ -402,6 +421,7 @@ Current limitations:
 - Add a sandboxed self-repair benchmark over intentionally broken mini-projects.
 - Add local model-backed website generation after a prompt/site/evaluation dataset exists.
 - Add LoRA/QLoRA fine-tuning after a compatible local foundation model is configured.
+- Add automatic project reconstruction benchmarks from held-out local projects.
 
 ## GitHub Publication 🚀
 

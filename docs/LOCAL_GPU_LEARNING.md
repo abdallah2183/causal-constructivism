@@ -103,6 +103,18 @@ For long-running jobs, write checkpoints under ignored `artifacts/`:
 This is real neural training on the local GPU. It is still dataset-limited: the
 model can only learn from the traces currently available.
 
+Phase 21 adds local code language training:
+
+```powershell
+.\scripts\build-code-corpus.ps1 -Output artifacts\code-corpus\local-code-corpus.jsonl
+.\scripts\run-code-language-training.ps1 -DurationSeconds 86400
+```
+
+This trains a byte-level CUDA Transformer over local project code. It is the
+first step toward learning project structure from real local files, but generated
+code still needs evaluation and repair loops before it should be treated as
+reliable.
+
 ## Honest Milestone
 
 The first serious learning milestone is not "be smarter than LLMs." It is:
